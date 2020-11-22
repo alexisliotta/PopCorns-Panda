@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { Link } from "react-router-dom";
-import "../App.css";
+import "./styles.scss";
 
 const Tarjetas = (props) => {
   return (
@@ -11,14 +11,14 @@ const Tarjetas = (props) => {
         props.peli.map((pelicula) => {
           return (
             <Link to={`/Pelicula/${pelicula.id}`}>
-              <div className="pelicula">
-                <div className="pelicula-imgagen">
+              <div className="card">
+                <div className="card__img">
                   <img
-                    className="img-pelicula"
+                    className="card__img__poster"
                     src={`https://image.tmdb.org/t/p/w500${pelicula.poster_path}`}
                   ></img>
                 </div>
-                <div className="pelicula-ranking">
+                <div className="card__ranking">
                   <CircularProgressbar
                     maxValue={10}
                     value={pelicula.vote_average}
@@ -34,8 +34,8 @@ const Tarjetas = (props) => {
                     })}
                   />
                 </div>
-                <div className="pelicula-title">
-                  <h4 className="titulo-tarjetas">
+                <div className="card__title">
+                  <h4 className="card__tarjetas">
                     {pelicula.original_title.substring(0, 17)}
                   </h4>
                 </div>

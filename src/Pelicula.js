@@ -14,7 +14,7 @@ import avatar from "./assets/avatar.png";
 import homepage from './assets/homepage.png'
 
 //style
-import "./pelicula.css";
+import "./pelicula.scss";
 
 const Pelicula = (props) => {
   const [peliculaId, setPeliculaId] = useState(props.match.params.id);
@@ -58,44 +58,44 @@ const Pelicula = (props) => {
     return avatar;
   }
   return (
-    <div className='pageAll'>
-      <div className='banner-top-movie'
+    <div className='page'>
+      <div className='page__banner'
          style={{
           backgroundImage: `url(https://image.tmdb.org/t/p/original${props.Film.backdrop_path})`,
         }}
       >
-        <Link to='/'> <img src={Logo} className='logo_small'/></Link>       
+        <Link to='/'> <img src={Logo} className='page__banner__logo'/></Link>       
         <a href={props.Film.homepage} target='_blank'>
-        <img  className='homepage-icon' width='50px' src={homepage}/>
+        <img  className='page__banner__homepage' width='50px' src={homepage}/>
         </a>
       </div>      
 
-      <div className='sub-banner-top-movie'>
-        <div className='pic-profile-movie'>
-        <img className='img-top-poster' src={`https://image.tmdb.org/t/p/w300${props.Film.poster_path}`}/>
+      <div className='page__sub-banner'>
+        <div className='page__sub-banner__profile'>
+        <img className='page__sub-banner__profile__pic' src={`https://image.tmdb.org/t/p/w300${props.Film.poster_path}`}/>
         </div>
-        <div className='inf-movie-top'>
-          <div className='title-title-title'>
-          <h1 className='titulo-info-h1'>{props.Film.original_title && props.Film.original_title.substring(0,25)}</h1>
+        <div className='page__sub-banner__info'>
+          <div className='page__sub-banner__info__title'>
+          <h1 className='page__sub-banner__info__title__h1'>{props.Film.original_title && props.Film.original_title.substring(0,25)}</h1>
           </div>
-          <div className='descripcion-card-movie'>
-          <h2 className='font-descripcion-card-movie'>Release date: {props.Film.release_date}</h2>
+          <div className='page__sub-banner__info__container'>
+          <h2 className='page__sub-banner__info__container__font'>Release date: {props.Film.release_date}</h2>
           </div>
-          <div className='descripcion-card-movie'>
-          <h2 className='font-descripcion-card-movie'>Duration: {props.Film.runtime} min</h2>
+          <div className='page__sub-banner__info__container'>
+          <h2 className='page__sub-banner__info__container__font'>Duration: {props.Film.runtime} min</h2>
           </div>
-          <div className='descripcion-card-movie'>
-          <h2 className='font-descripcion-card-movie'>Original Lenguage: {props.Film.original_language} </h2>
+          <div className='page__sub-banner__info__container'>
+          <h2 className='page__sub-banner__info__container__font'>Original Lenguage: {props.Film.original_language} </h2>
           </div>
-          <div className='descripcion-card-movie'>
-          <h2 className='font-descripcion-card-movie'>Ranking: {props.Film.vote_average} </h2>
+          <div className='page__sub-banner__info__container'>
+          <h2 className='page__sub-banner__info__container__font'>Ranking: {props.Film.vote_average} </h2>
           </div>
-          <div className='descripcion-card-movie'>
-          <h2 className='font-descripcion-card-movie'>{props.Film.overview} </h2>
+          <div className='page__sub-banner__info__container'>
+          <h2 className='page__sub-banner__info__container__font'>{props.Film.overview} </h2>
           </div>
         </div>
       </div>
-      <div className='container-footer'>     
+      <div className='page__footer'>     
       <ReactTooltip />
       {videos && videos.results && (
           <iframe
@@ -108,19 +108,19 @@ const Pelicula = (props) => {
             title="video"
           />
         )}
-      <h4 className='reparto-h4'>Crew</h4>
+      <h4 className='page__footer__reparto-h4'>Crew</h4>
       {props.reparto && props.reparto.cast && (
-        <div className='reparto-container-cards'>
+        <div className='page__footer__reparto-container'>
           {props.reparto.cast.slice(0,15).map((credito) =>{
             return(
-              <div className='reparto-container'>
-                <div className='reparto-img'>
+              <div className='page__footer__reparto-container__reparto'>
+                <div className='page__footer__reparto-container__reparto__reparto-img'>
                 <img                
                     width='90px'
                     src={generateActorPhoto(credito.profile_path)}
                   />
                 </div>
-                <div className='reparto-name'>
+                <div className='page__footer__reparto-container__reparto__reparto-name'>
                 <h5>{credito.name.substring(0,15)}</h5>
                 </div> 
               </div>

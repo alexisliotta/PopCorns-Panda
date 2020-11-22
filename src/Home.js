@@ -9,7 +9,7 @@ import Tarjetas from "./components/Tarjetas";
 
 // Assets
 import Panda from "./assets/logo_org.png";
-import "./App.css";
+import "./styles.scss";
 
 function Home(props) {
   const [posicionScroll, setPosicionScroll] = useState(window.scrollY);
@@ -34,11 +34,11 @@ function Home(props) {
 
   return (
     <BottomScrollListener onBottom={fetchMoviesAndDispatch}>
-      <div className="m">
-        <div className={`top ${posicionScroll >= 100 ? "normal" : "trasparente"}`}>
-          <img src={Panda} className="logo-nav animate__animated animate__bounce"/>
+      <div className="resolucion">
+        <div className={`banner ${posicionScroll >= 100 ? "banner__normal" : "banner__trasparente"}`}>
+          <img src={Panda} className="banner__logo animate__animated animate__bounce"/>
         </div>
-        <div className="contenido-mid">
+        <div className="container">
           <Tarjetas peli={props.peliculas} />
         </div>
       </div>
